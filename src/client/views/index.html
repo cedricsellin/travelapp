@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Travel Planner App </title>
+</head>
+<body>
+    <section id="header">
+        <header class="main__hero">
+            <h1>Travel Planner App - Enter a Location and a future date for your trip </h1>
+            <p>After getting some information about the trip you can save it for future reference</p>
+        </header>
+        <p>My saved trips:</p>
+    </section>
+    <section id="past_trips">
+    </section>
+    <section id="new_trip">
+        <form>
+            My Trip Location <input type="text" id="new_trip_location" name="new_trip_location"><br>
+            Departing: <input type="date" name="new_trip_date" id="new_trip_date"><br>
+            <button id="new_trip_search_btn" type="button"> Search Information</button><br>
+        </form>
+        <div id="error_field"></div>
+    </section>
+    <section id="search_result"></section>
+</body>
+</html>
