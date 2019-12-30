@@ -39,7 +39,6 @@ async function getCityInformation(city, tripDate) {
 
     const darkskyEndpoint = `https://api.darksky.net/forecast/${darkskyKey}/${latitude},${longitude},${time}`
     const darkskyResponse = await fetch(darkskyEndpoint).then(response => response.json()).then(value => {
-        //console.log(value)
         weather = value.daily
     }).catch(error => { throw new Error("Server Error " + error.toString()) })
 
