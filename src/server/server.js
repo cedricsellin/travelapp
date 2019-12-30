@@ -4,7 +4,12 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const PORT = 8080
+const DEBUG = true
 
+function debug(str) {
+    if (DEBUG == true)
+        console.log(str)
+}
 // This is an array with all the saved trips but only the city and departingDate are keys the rest is updated when the client requests the information
 /* let savedTrips = [
     {
@@ -48,8 +53,13 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(express.static('dist'))
 
-app.listen(PORT, function () {
-    //////console.log('server listening on port ' + PORT)
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    next()
+  })
+  
+  app.listen(PORT, function () {
+    debug('server listening on port ' + PORT)
 })
 
 //Returning the website html page
@@ -59,7 +69,7 @@ app.get('/', function (req, res) {
 
 //Function returning the saved trips
 app.get('/savedTrips', function (req, res) {
-    //////console.log('sending trips back')
+    debug('sending trips back')
     refreshTripData().then(result => {
         res.send(JSON.stringify(savedTrips))
     }).catch(error => {
@@ -71,14 +81,15 @@ app.get('/savedTrips', function (req, res) {
 
 //Function to search information on a trip before saving it 
 app.get('/searchTrips/:location/:date', function (req, res) {
-    //console.log('searching trips')
-    //console.log(req.params.location)
-    //console.log(req.params.date)
+    debug('searching trips')
+    debug(req.params.location)
+    debug(req.params.date)
 
     getCityInformation(req.params.location, req.params.date).then(result => {
-        //console.log('sending result ' + result)
+        debug('sending result ' + result)
         res.send(JSON.stringify(result))
     }).catch(error => {
+        debug(error.toString())
         res.status(500)
         res.statusText = error.toString()
         res.send()
@@ -87,8 +98,8 @@ app.get('/searchTrips/:location/:date', function (req, res) {
 
 //Function adding a trip to the saved trips
 app.post('/newtrip', function (req, res) {
-    //console.log('logging a new trip')
-    //console.log(req.body)
+    debug('logging a new trip')
+    debug(req.body)
     res.status(200)
     res.statusText = "Data Successfully Added"
     savedTrips.push({
@@ -102,25 +113,25 @@ app.post('/newtrip', function (req, res) {
 
 //Function adding a trip to the saved trips
 app.post('/removetrip', function (req, res) {
-    //console.log('removing an old trip')
-    //console.log(req.body)
-    //console.log(savedTrips.length)
+    debug('removing an old trip')
+    debug(req.body)
+    debug(savedTrips.length)
     for (let i = 0; i < savedTrips.length; i++) {
-        //console.log(savedTrips[i].departingDate, req.body.departingDate, savedTrips[i].city, req.body.city)
+        debug(savedTrips[i].departingDate, req.body.departingDate, savedTrips[i].city, req.body.city)
 
         if (savedTrips[i].departingDate == req.body.departingDate && savedTrips[i].city == req.body.city && savedTrips[i].country == req.body.country) {
             savedTrips.splice(i, 1)
             res.status(200)
             res.statusText = "Data Successfully Removed"
-            //console.log("found the element - new data")
-            //console.log(savedTrips)
+            debug("found the element - new data")
+            debug(savedTrips)
             break
         }
 
         if (i == savedTrips.length - 1) {
             res.status(500)
             res.statusText = "Data could not be found"
-            //console.log("couldn't find the data in the array")
+            debug("couldn't find the data in the array")
         }
     }
 

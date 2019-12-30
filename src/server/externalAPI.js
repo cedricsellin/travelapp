@@ -10,6 +10,12 @@ const username = process.env.GEONAME_USERNAME
 const pixabayKey = process.env.PIXABAY_KEY
 const darkskyKey = process.env.DARKSKY_KEY
 const geonameUser = process.env.GEONAME_USERNAME
+const DEBUG = true
+
+function debug(str) {
+    if (DEBUG == true)
+        console.log(str)
+}
 
 async function getCityInformation(city, tripDate) {
 
@@ -22,19 +28,19 @@ async function getCityInformation(city, tripDate) {
     let value = tripDate.split('-')
 
     if (geonameUser == undefined || pixabayKey == undefined || darkskyKey == undefined || geonameUser == undefined) {
-        console.log('setup your environment')
+        debug('setup your environment')
         throw new Error ("Server Error - not configured properly")
     }
-    //console.log(value)
+    debug(value)
     let date = new Date(value[0], value[1] - 1, value[2])
     //Unix time is in seconds versus milliseconds for getTime
     let time = date.getTime() / 1000
-    ////console.log("time = "+ time)
+    debug("time = "+ time)
     const geoResponse = await fetch(geonameEndPoint).then(res => res.json()).then(value => {
         latitude = value.postalCodes[0].lat
         longitude = value.postalCodes[0].lng
         country = getName(value.postalCodes[0].countryCode)
-        //console.log(`country ${country} - code: ${value.postalCodes[0].countryCode}`)
+        debug(`country ${country} - code: ${value.postalCodes[0].countryCode}`)
     }).catch(error => { throw new Error("Server Error " + error.toString()) })
 
     const darkskyEndpoint = `https://api.darksky.net/forecast/${darkskyKey}/${latitude},${longitude},${time}`
@@ -61,7 +67,7 @@ async function getCityInformation(city, tripDate) {
         description: weather.data[0].summary,
         tags: pixabayData.tags
     }
-    //console.log('JSON ' + JSON.stringify(json))
+    debug('JSON ' + JSON.stringify(json))
 
     return (json)
 }
@@ -73,18 +79,18 @@ async function getPixabayData(city, country) {
     let success = false
 
     let resp = await fetch(cityPixabayEndpoint).then(response => response.json()).then(data => {
-        //console.log('got the result')
-        ////console.log(data.hits[0])
+        debug('got the result')
+        debug(data.hits[0])
         success = true
         result = { url: data.hits[0].webformatURL, tags: data.hits[0].tags }
         return result
     })
 
     if (success == false) {
-        //console.log('failed on the fetch for city')
+        debug('failed on the fetch for city')
         resp = await fetch(countryPixabayEndpoint).then(response => response.json()).then(data => {
-            //console.log('fetching results for country only if previous one failed ')
-            //console.log(data.hits[0])
+            debug('fetching results for country only if previous one failed ')
+            debug(data.hits[0])
             result = { url: data.hits[0].webformatURL, tags: data.hits[0].tags }
             return result
         }).catch(error => { throw new Error("Server Error " + error.toString()) })
