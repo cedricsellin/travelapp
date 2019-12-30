@@ -1,3 +1,10 @@
+Step to run the project:
+ - rename the env file on the root directory to .env
+ - install the node modules - npm i 
+ - npm run build-prod
+ - run "npm run start"
+
+
 In this project we will have a web app allowing the users to input a location, date and it will return a picture of the place in addition to the weather information
 
 At the initial stage the application will query the server for the past trip information
