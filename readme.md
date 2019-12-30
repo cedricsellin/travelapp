@@ -11,6 +11,12 @@ GET: '/oldtrips' to get the past trips - it will return a JSON with Date, Locati
 POST: '/newtrip' sending a JSON to the server to insert the latest trip information
 POST: '/removetrip' sending a JSON to the server to delete an existing trip
 
+You will need a .env file in the root directory with 
+GEONAME_USERNAME
+DARKSKY_KEY=
+PIXABAY_KEY=
+
+Start the server with npm run start
 
 //TODO: Deal with the caching of images?
 // REDIS INSTANCE - KUBERNETES - DOCKER

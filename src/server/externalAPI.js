@@ -20,10 +20,15 @@ async function getCityInformation(city, tripDate) {
     const cityEncoded = encodeURIComponent(city)
     const geonameEndPoint = `http://api.geonames.org/postalCodeSearchJSON?username=${geonameUser}&placename=${cityEncoded}`
     let value = tripDate.split('-')
+
+    if (geonameUser == undefined || pixabayKey == undefined || darkskyKey == undefined || geonameUser == undefined) {
+        console.log('setup your environment')
+        throw new Error ("Server Error - not configured properly")
+    }
     //console.log(value)
-    let date = new Date(value[0], value[1]-1, value[2])
+    let date = new Date(value[0], value[1] - 1, value[2])
     //Unix time is in seconds versus milliseconds for getTime
-    let time = date.getTime()/1000
+    let time = date.getTime() / 1000
     ////console.log("time = "+ time)
     const geoResponse = await fetch(geonameEndPoint).then(res => res.json()).then(value => {
         latitude = value.postalCodes[0].lat
