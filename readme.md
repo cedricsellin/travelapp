@@ -3,6 +3,7 @@ Step to run the project:
  - install the node modules - npm i 
  - npm run build-prod
  - run "npm run start"
+ - log onto localhost:8080 on a broswer
 
 
 In this project we will have a web app allowing the users to input a location, date and it will return a picture of the place in addition to the weather information
