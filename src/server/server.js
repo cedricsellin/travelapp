@@ -56,9 +56,9 @@ app.use(express.static('dist'))
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*')
     next()
-  })
-  
-  app.listen(PORT, function () {
+})
+
+app.listen(PORT, function () {
     debug('server listening on port ' + PORT)
 })
 

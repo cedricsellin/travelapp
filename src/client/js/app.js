@@ -52,11 +52,11 @@ function generateTemplateHTML(element, i, savedTrip) {
     const buttonId = (savedTrip) ? `trip_remove_btn-${i}` : `trip_save_btn-${i}`
     const UID = `${element.city}${separator}${element.departingDate}${separator}${element.country}`
     const today = new Date()
-    
+
     const values = element.departingDate.split("-")
     //Months start at 0 for some weird reason
-    const departingDate = new Date(parseInt(values[0]), parseInt(values[1])-1, parseInt(values[2]))
-    const diff = Math.round((today - departingDate)/(1000 * 60 * 60 * 24))
+    const departingDate = new Date(parseInt(values[0]), parseInt(values[1]) - 1, parseInt(values[2]))
+    const diff = Math.round((today - departingDate) / (1000 * 60 * 60 * 24))
     const daysAbs = Math.abs(diff)
     const daysText = (diff > 0) ? "due" : "away"
     const newHtml = `<div id="trip_photo_${i}" class="trip_photo_holder"><img src="${element.imgURL}" alt="${element.tags}"  width="400"></div>
@@ -80,6 +80,16 @@ function setErrorField(err) {
     errorField.innerHTML = err.toString()
 }
 
+function isValidDate(value) {
+    console.log(value)
+
+    var regex = /(\d{4})[-](\d{1,2})[-](\d{1,2})\s*/
+    
+ 
+    return !regex.test(value) 
+
+}
+
 async function clickedOnSearch(event) {
     //console.log('clicked on Search')
     const locationField = document.getElementById('new_trip_location')
@@ -94,8 +104,9 @@ async function clickedOnSearch(event) {
     }
 
     const value = dateField.value
-    if (dateField.value == '' || dateField.validity.valid == false) {
-        setErrorField("Invalid Date")
+    if (dateField.value == '' || dateField.validity.valid == false || isValidDate(dateField.value)) {
+        setErrorField("Invalid Date needs to be MM-DD-YYYY")
+        dateField.value=""
         return false
     }
     const location = encodeURIComponent(locationField.value)
@@ -110,11 +121,11 @@ async function clickedOnSearch(event) {
             success = false
         }
         return resp.json()   //TODO: DEAL WITH MULTIPLE SEARCH RESULTS
-    }).then(data => { 
+    }).then(data => {
         let i = 0
         searchResultSection.innerHTML = generateTemplateHTML(data, i, false)
         document.getElementById(`trip_save_btn-${i}`).addEventListener('click', saveTripBtnPressed)
-    
+
     }).catch(error => {
         setErrorField(errorField.toString())
     })
@@ -159,7 +170,7 @@ function removeTripBtnPressed(event) {
         })
     }).then(resp => {
         const tripDetails = document.getElementById(`trip_details_${id}`)
-        const tripPhoto   = document.getElementById(`trip_photo_${id}`)
+        const tripPhoto = document.getElementById(`trip_photo_${id}`)
         tripDetails.style.display = 'none'
         tripPhoto.style.display = 'none'
         //console.log('removing element')
