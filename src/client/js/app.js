@@ -61,7 +61,7 @@ function generateTemplateHTML(element, i, savedTrip) {
     const daysText = (diff > 0) ? "due" : "away"
     const newHtml = `<div id="trip_photo_${i}" class="trip_photo_holder"><img src="${element.imgURL}" alt="${element.tags}"  width="400"></div>
     <div class="trip_details" id="trip_details_${i}">
-        <div id="trip_location_${i}"> My Trip to ${element.city}, ${element.country}</div>
+        <div id="trip_location_${i}"> My Trip to ${element.city}</div>
         <div id="trip_date_${i}">Departing: ${element.departingDate}</div>
         <div id="trip_buttons_${i}">
             <button id="${buttonId}" data="${i}" uid="${UID}" type="button" class="trip_btn"> ${buttonText} </button>

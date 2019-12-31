@@ -10,7 +10,7 @@ const username = process.env.GEONAME_USERNAME
 const pixabayKey = process.env.PIXABAY_KEY
 const darkskyKey = process.env.DARKSKY_KEY
 const geonameUser = process.env.GEONAME_USERNAME
-const DEBUG = true
+const DEBUG = false
 
 function debug(str) {
     if (DEBUG == true)

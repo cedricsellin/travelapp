@@ -5,6 +5,11 @@ Step to run the project:
  - run "npm run start"
  - log onto localhost:8080 on a broswer
 
+Make sure you run the production version if you get a CORS error. I have put a screenshot to show the output with the PRELOADED DATA
+
+On the server side there are two flags - DEBUG for console.log output if set to true and PRELOAD_DATA = true or false if you want to get some initial data
+We are reloading all the information at each instance because the service from pixabay is rotating the URLs and the weather could be changing
+We could cache a bunch of the information to improve performance but this isn't needed for this project
 
 In this project we will have a web app allowing the users to input a location, date and it will return a picture of the place in addition to the weather information
 
