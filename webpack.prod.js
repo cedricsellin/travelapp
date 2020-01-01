@@ -8,7 +8,6 @@ const WorkboxWebPackPlugin = require('workbox-webpack-plugin')
 module.exports = {
     entry: "./src/client/index.js",
     mode: 'production',
-    stats: 'verbose',
     output: {
         library: 'lib'
     },

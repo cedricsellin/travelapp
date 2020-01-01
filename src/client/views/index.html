@@ -22,12 +22,13 @@
         <form>
             My Trip Location <input type="text" id="new_trip_location" name="new_trip_location"><br>
             Departing YYYY-MM-DD: <input type="date" name="new_trip_date" id="new_trip_date" value="2020-01-30"><br>
-            <button id="new_trip_search_btn" type="button" onclick="return lib.clickedOnSearch(event)" onsubmit="return lib.clickedOnSearch(event)"> Search Information</button><br>
+            <button id="new_trip_search_btn" type="button" onclick="return mylib.clickedOnSearch(event)"
+                onsubmit="return mylib.clickedOnSearch(event)"> Search Information</button><br>
         </form>
         <div id="error_field"></div>
     </section>
     <section id="search_result"></section>
-    <script>
+    <!--   <script>
         // Check that service workers are supported
         if ('serviceWorker' in navigator) {
             // Use the window load event to keep the page load performant
@@ -35,7 +36,7 @@
                 navigator.serviceWorker.register('/service-worker.js');
             });
         }
-    </script> 
+    </script>  -->
 </body>
 
 </html>

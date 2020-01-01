@@ -1,3 +1,2 @@
-import './media/louvre-102840_640.jpg'
 import './styles/style.scss'
-import './js/app.js'
+import { clickedOnSearch, isValidDate } from './js/app.js'

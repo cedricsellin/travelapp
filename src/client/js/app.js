@@ -8,12 +8,12 @@ let searchResultSection = null
 const separator = "%"
 const serverUrl = "http://localhost:8080"
 
+
 document.addEventListener('DOMContentLoaded', function () {
     newSearchButton = document.getElementById('new_trip_search_btn')
     errorField = document.getElementById('error_field')
     savedTripsSection = document.getElementById('past_trips')
     //newSearchButton.addEventListener('click', clickedOnSearch)
-
     searchResultSection = document.getElementById('search_result')
     loadSavedTrips()
 })
@@ -181,5 +181,5 @@ function removeTripBtnPressed(event) {
     })
 }
 
-module.exports.clickedOnSearch = clickedOnSearch
-module.exports.isValidDate = isValidDate
+export { clickedOnSearch, isValidDate }
+
