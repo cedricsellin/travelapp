@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     newSearchButton = document.getElementById('new_trip_search_btn')
     errorField = document.getElementById('error_field')
     savedTripsSection = document.getElementById('past_trips')
-    newSearchButton.addEventListener('click', clickedOnSearch)
+    //newSearchButton.addEventListener('click', clickedOnSearch)
 
     searchResultSection = document.getElementById('search_result')
     loadSavedTrips()
@@ -92,6 +92,8 @@ function isValidDate(value) {
 
 async function clickedOnSearch(event) {
     //console.log('clicked on Search')
+    event.preventDefault()
+
     const locationField = document.getElementById('new_trip_location')
     const dateField = document.getElementById('new_trip_date')
 
@@ -178,3 +180,6 @@ function removeTripBtnPressed(event) {
         setErrorField(error.toString())
     })
 }
+
+module.exports.clickedOnSearch = clickedOnSearch
+module.exports.isValidDate = isValidDate

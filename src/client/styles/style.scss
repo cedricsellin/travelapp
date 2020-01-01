@@ -31,5 +31,15 @@ input {
     margin: 10px;
 }
 #new_trip_date:invalid{
-    color:red
+    color:red;
 }
+
+
+button:hover{
+    background: red;
+    background-color: yellow;
+}
+@keyframes blikingAnimation {
+    from {background-color: red};
+    to {background-color: yellow};
+  }

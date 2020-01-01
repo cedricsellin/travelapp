@@ -11,7 +11,7 @@ On the server side there are two flags - DEBUG for console.log output if set to 
 We are reloading all the information at each instance because the service from pixabay is rotating the URLs and the weather could be changing
 We could cache a bunch of the information to improve performance but this isn't needed for this project
 
-In this project we will have a web app allowing the users to input a location, date and it will return a picture of the place in addition to the weather information
+In this project we will have a web app allowing the users to input a location, date and it will return a picture of the place in addition to the weather information. If the picture is not available it will fetch an image of the country
 
 At the initial stage the application will query the server for the past trip information
 
@@ -33,8 +33,4 @@ Start the server with npm run start
 
 //TODO: Deal with the caching of images?
 // REDIS INSTANCE - KUBERNETES - DOCKER
-// TEST OBSCURE LOCATION
-// TEST WHEN EMPTY ARRAY OF SAVED TRIPS
-// CHECK RUNNING THE SERVER FROM HIS LOCAL DIRECTORY 
-// WHERE IS THE INDEX.HTML COMING FROM
 // DEAL WITH THE ALT from the images
