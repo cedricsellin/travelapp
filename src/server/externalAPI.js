@@ -6,7 +6,6 @@ const { getName } = require('country-list')
 dotenv.config()
 
 //Cannnot put those calls before the dotenv.config()
-const username = process.env.GEONAME_USERNAME
 const pixabayKey = process.env.PIXABAY_KEY
 const darkskyKey = process.env.DARKSKY_KEY
 const geonameUser = process.env.GEONAME_USERNAME
@@ -46,6 +45,12 @@ async function getCityInformation(city, tripDate) {
     const darkskyEndpoint = `https://api.darksky.net/forecast/${darkskyKey}/${latitude},${longitude},${time}`
     const darkskyResponse = await fetch(darkskyEndpoint).then(response => response.json()).then(value => {
         weather = value.daily
+        debug(value)
+        debug("DAILY")
+        debug(value.daily)
+
+        if (weather.data[0].summary == undefined)
+            weather.data[0].summary = "No clear forecast - Date is too far"
     }).catch(error => { throw new Error("Server Error " + error.toString()) })
 
     const pixabayEndpoint = `http://pixabay.com/api/?key=${pixabayKey}&q=${cityEncoded}`
@@ -99,7 +104,25 @@ async function getPixabayData(city, country) {
     return resp
 }
 
-module.exports.getCityInformation = getCityInformation
+function testPixabayConnection(city, country){
 
+    let result = getPixabayData(city, country)
+    return result
+}
+
+function getServerConfig(){
+
+    const json = {
+        pixabayKey: pixabayKey,
+        darkskyKey: darkskyKey,
+        geonameUser: geonameUser
+    }
+    //console.log(json)
+    return (json)
+
+}
+module.exports.testPixabayConnection = testPixabayConnection
+module.exports.getCityInformation = getCityInformation
+module.exports.getServerConfig = getServerConfig
 
 
