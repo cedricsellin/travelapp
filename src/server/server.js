@@ -1,5 +1,6 @@
 const templateData = require('./templateData.js')
-const { getCityInformation } = require('./externalAPI')
+const assert = require('assert')
+const { getServerConfig, getCityInformation } = require('./externalAPI')
 const path = require('path')
 const express = require('express')
 const cors = require('cors')
@@ -32,6 +33,15 @@ app.use((req, res, next) => {
 
 app.listen(PORT, function () {
     debug('server listening on port ' + PORT)
+    const conf = getServerConfig()
+    
+    try { assert(conf.pixabayKey)
+        assert(conf.darkskyKey)
+        assert(conf.geonameUser)
+    } catch(error) {
+        console.log("THE SERVER KEYS ARE NOT CONFIGURED")
+        process.exit()
+    }
 })
 
 //Returning the website html page
