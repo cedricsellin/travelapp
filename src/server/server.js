@@ -6,7 +6,7 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const PORT = 8080
-const DEBUG = false
+const DEBUG = true
 const PRELOAD_DATA = false
 /*
 const apiVideo = require('@api.video/nodejs-sdk');
