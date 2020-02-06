@@ -5,11 +5,17 @@ const { getName } = require('country-list')
 
 dotenv.config()
 
-console.log(process.env)
+//console.log(process.env)
 //Cannnot put those calls before the dotenv.config()
-const pixabayKey = process.env.PIXABAY_KEY
+/* const pixabayKey = process.env.PIXABAY_KEY
 const darkskyKey = process.env.DARKSKY_KEY
-const geonameUser = process.env.GEONAME_USERNAME
+const geonameUser = process.env.GEONAME_USERNAME */
+
+
+const pixabayKey = '14709793-5900a2b7c1d2b23a125647557'
+const darkskyKey = '8aba545be91e8ed3826ace6102d45366'
+const geonameUser = 'csellin' 
+
 const DEBUG = false
 
 function debug(str) {
