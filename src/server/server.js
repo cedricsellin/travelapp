@@ -10,7 +10,7 @@ const DEBUG = false
 const PRELOAD_DATA = false
 
 const apiVideo = require('@api.video/nodejs-sdk');
-
+/*
 // Create client for Production and authenticate
 const client = new apiVideo.Client({ apiKey: 'M2g0b2uoIGLtzIbgtt2tRVdgYgza0WjyrEUECHmv8zT' });
 console.log("created the client")
@@ -22,7 +22,7 @@ result.then(function(video) {
 }).catch(function(error) {
   console.error(error);
 });
-
+*/
 
 function debug(str) {
     if (DEBUG == true)
