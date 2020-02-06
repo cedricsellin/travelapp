@@ -31,12 +31,12 @@ playerClient.then(function(player) {
   console.log(player.playerId);
   playerId = player.playerId
 });
-
+*/
 function debug(str) {
     if (DEBUG == true)
         console.log(str)
 }
-*/
+
 
 let savedTrips = []
 
