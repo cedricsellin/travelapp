@@ -5,6 +5,7 @@ const { getName } = require('country-list')
 
 dotenv.config()
 
+console.log(process.env)
 //Cannnot put those calls before the dotenv.config()
 const pixabayKey = process.env.PIXABAY_KEY
 const darkskyKey = process.env.DARKSKY_KEY
@@ -27,8 +28,8 @@ async function getCityInformation(city, tripDate) {
     const geonameEndPoint = `http://api.geonames.org/postalCodeSearchJSON?username=${geonameUser}&placename=${cityEncoded}`
     let value = tripDate.split('-')
 
-    if (geonameUser == undefined || pixabayKey == undefined || darkskyKey == undefined || geonameUser == undefined) {
-        debug('setup your environment')
+    if (geonameUser == undefined || pixabayKey == undefined || darkskyKey == undefined) {
+        debug('setup your environment geo'+geonameUser+'pixa'+pixabayKey+'darksky'+darkskyKey)
         throw new Error ("Server Error - not configured properly")
     }
     debug(value)
