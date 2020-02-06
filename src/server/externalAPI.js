@@ -16,6 +16,7 @@ function debug(str) {
         console.log(str)
 }
 
+
 async function getCityInformation(city, tripDate) {
 
     let latitude = null

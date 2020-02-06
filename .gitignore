@@ -2,3 +2,9 @@
 node_modules
 dist
 
+
+.qovery
+local_configuration.json
+
+.qovery
+local_configuration.json

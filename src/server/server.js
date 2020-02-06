@@ -9,6 +9,21 @@ const PORT = 8080
 const DEBUG = false
 const PRELOAD_DATA = false
 
+const apiVideo = require('@api.video/nodejs-sdk');
+
+// Create client for Production and authenticate
+const client = new apiVideo.Client({ apiKey: 'M2g0b2uoIGLtzIbgtt2tRVdgYgza0WjyrEUECHmv8zT' });
+console.log("created the client")
+// Create and upload a video ressource
+let result = client.videos.upload('data/superbowl.mp4', {title: 'Superbowl'});
+console.log('called the upload')
+result.then(function(video) {
+  console.log(video.title);
+}).catch(function(error) {
+  console.error(error);
+});
+
+
 function debug(str) {
     if (DEBUG == true)
         console.log(str)
