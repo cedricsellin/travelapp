@@ -5,7 +5,7 @@ const path = require('path')
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const PORT = 80
+const PORT = 8080
 const DEBUG = false
 const PRELOAD_DATA = false
 /*
@@ -36,7 +36,6 @@ function debug(str) {
     if (DEBUG == true)
         console.log(str)
 }
-
 
 let savedTrips = []
 
