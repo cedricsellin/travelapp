@@ -5,12 +5,12 @@ const path = require('path')
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const PORT = 8080
+const PORT = 80
 const DEBUG = false
 const PRELOAD_DATA = false
-
-const apiVideo = require('@api.video/nodejs-sdk');
 /*
+const apiVideo = require('@api.video/nodejs-sdk');
+
 // Create client for Production and authenticate
 const client = new apiVideo.Client({ apiKey: 'M2g0b2uoIGLtzIbgtt2tRVdgYgza0WjyrEUECHmv8zT' });
 console.log("created the client")
@@ -22,12 +22,21 @@ result.then(function(video) {
 }).catch(function(error) {
   console.error(error);
 });
-*/
+
+// Create players with default values
+let playerClient = client.players.create();
+let playerId = null
+
+playerClient.then(function(player) {
+  console.log(player.playerId);
+  playerId = player.playerId
+});
 
 function debug(str) {
     if (DEBUG == true)
         console.log(str)
 }
+*/
 
 let savedTrips = []
 
