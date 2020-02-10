@@ -1,6 +1,3 @@
-
-
-
 const templateData = require('./templateData.js')
 const assert = require('assert')
 const { getServerConfig, getCityInformation } = require('./externalAPI')
@@ -12,7 +9,7 @@ const PORT = 8080
 const DEBUG = true
 const PRELOAD_DATA = false
 
-const apiVideo = require('@api.video/nodejs-sdk');
+/*const apiVideo = require('@api.video/nodejs-sdk');
 
 // Create client for Production and authenticate
 const client = new apiVideo.Client({ apiKey: 'M2g0b2uoIGLtzIbgtt2tRVdgYgza0WjyrEUECHmv8zT' });
@@ -33,7 +30,7 @@ let playerId = null
 playerClient.then(function(player) {
   console.log(player.playerId);
   playerId = player.playerId
-});
+}); */
 
 function debug(str) {
     if (DEBUG == true)
