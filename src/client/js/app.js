@@ -6,7 +6,7 @@ let errorField = null
 let savedTripsSection = null
 let searchResultSection = null
 const separator = "%"
-const serverUrl = "http://localhost:8080"
+const serverUrl = "http://localhost"
 
 
 document.addEventListener('DOMContentLoaded', function () {
