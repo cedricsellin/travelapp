@@ -1,3 +1,6 @@
+
+
+
 const templateData = require('./templateData.js')
 const assert = require('assert')
 const { getServerConfig, getCityInformation } = require('./externalAPI')
@@ -8,7 +11,7 @@ const bodyParser = require('body-parser')
 const PORT = 8080
 const DEBUG = true
 const PRELOAD_DATA = false
-/*
+
 const apiVideo = require('@api.video/nodejs-sdk');
 
 // Create client for Production and authenticate
@@ -31,7 +34,7 @@ playerClient.then(function(player) {
   console.log(player.playerId);
   playerId = player.playerId
 });
-*/
+
 function debug(str) {
     if (DEBUG == true)
         console.log(str)
