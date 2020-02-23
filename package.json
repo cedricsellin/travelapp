@@ -1,5 +1,6 @@
 {
   "name": "travel-planner",
+ 
   "version": "1.0.0",
   "description": "Travel Planner App",
   "main": "webpack.config.js",
